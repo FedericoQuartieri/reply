@@ -4,7 +4,7 @@ const fs=require('fs')
 
 //const data=fs.readFileSync('input-teleportation-e539.txt',{encoding:'utf8',flag:'r'}).split('\n')
 //const data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).split('\n')
-const data=fs.readFileSync('input-party-2187.txt',{encoding:'utf8',flag:'r'}).split('\n')
+const data=fs.readFileSync('input-party-81b9.txt',{encoding:'utf8',flag:'r'}).split('\n')
 
 const cases = data.shift()
 
@@ -47,7 +47,17 @@ const result = {}
 console.log(obje)
 
 Object.keys(obje).forEach(key =>{
-    // do something and get res for each case
+    const positive_array = obje[key][1].split(" ").map(e => parseInt(e)).filter(e => e > 0) 
+    console.log(positive_array)
+    let res = 0
+    if (positive_array.length === 0) {
+        res = 0
+    } else {
+        res = positive_array.reduce((total, num) => {
+            return total + num
+        })
+    }
+    console.log(res)
     result[key] = res
 })
 
