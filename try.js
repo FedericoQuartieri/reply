@@ -1,10 +1,14 @@
 
 const fs=require('fs')
-const data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).split('\n').slice(1)
-const num = 6
+const data=fs.readFileSync('input-teleportation-e539.txt',{encoding:'utf8',flag:'r'}).split('\n').slice(1)
+const num = 7
+const cases=null
 const obje = {}
-data.forEach((e,i) => {
-    if(i<10){
+data.forEach((e,i
+    
+    
+    ) => {
+    if(i<cases){
     const a = data
     obje[i+1] = a.slice(i*num,(i+1)*num)
 
