@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-Case #1: 51778
-Case #2: 54654
-Case #3: 37997
-Case #4: 30972
-Case #5: 62008
-Case #6: 7952
-Case #7: 26011
-Case #8: 46388
-Case #9: 141160
-Case #10: 67575
-Case #11: 37909
-Case #12: 62543
-Case #13: 177341
-Case #14: 15853
-Case #15: 53108
-Case #16: 36401
-Case #17: 51830
-Case #18: 34101
-Case #19: 38537
-Case #20: 86084
-=======
 Case #1: null
 Case #2: null
 Case #3: null
@@ -40,4 +18,3 @@ Case #17: null
 Case #18: null
 Case #19: null
 Case #20: null
->>>>>>> 59b48b2444a8fd2ed8ca752db662b20c3b3e0e25

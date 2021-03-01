@@ -1,33 +1,9 @@
 const fs=require('fs')
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati e richiede due variabili
-
-<<<<<<< HEAD
-//const data=fs.readFileSync('input-teleportation-e539.txt',{encoding:'utf8',flag:'r'}).split('\n')
-//const data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).split('\n')
-const data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split('\n')
-
-const cases = data.shift()
-
-const rows = 0                 // variable
-const rows_before_num = 2       // variable
-
-const multiple_rows = []
-const obje = {}
-
-if (rows === 0) {
-    let curnum = 0
-    data.forEach((e,i) => {
-        if (i === rows_before_num + curnum ) {
-            curnum += parseInt(e) + rows_before_num + 1 
-            multiple_rows.push(curnum)
-=======
-const data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split('\n')
-const cases = data.shift()
-
->>>>>>> 59b48b2444a8fd2ed8ca752db662b20c3b3e0e25
-
-const parser = (rows_before_num, rows = 0) => {
+const parser = (input,rows_before_num, rows = 0) => {
+    const data=fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
+    const cases = data.shift()
     const multiple_rows = []
     const obje = {}
     if (rows === 0) {
@@ -63,7 +39,7 @@ const parser = (rows_before_num, rows = 0) => {
     return obje
 }
 
-const obje = parser(2) 
+const obje = parser("input-teleportation-35b0.txt",2) 
 
 console.log(obje)
 
