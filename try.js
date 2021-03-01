@@ -36,6 +36,9 @@ const parser = (input,rows_before_num, rows = 0) => {
         const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
         obje[key] = res
     })
+    Object.keys(obje).forEach(key =>{
+        obje[key].splice([rows_before_num],1)
+    })
     return obje
 }
 
@@ -48,11 +51,11 @@ console.log(obje)
 const result = {}
 
 Object.keys(obje).forEach(key =>{
-    if (true){
-        console.log(key)
+
+
         res = null
         result[key] = res
-    }
+    
 })
 
 // parse out che richiede un oggetto con chiave caso valore risultato
