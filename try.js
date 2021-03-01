@@ -4,11 +4,11 @@ const fs=require('fs')
 
 //const data=fs.readFileSync('input-teleportation-e539.txt',{encoding:'utf8',flag:'r'}).split('\n')
 //const data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).split('\n')
-const data=fs.readFileSync('input-party-81b9.txt',{encoding:'utf8',flag:'r'}).split('\n')
+const data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split('\n')
 
 const cases = data.shift()
 
-const rows = 2                 // variable
+const rows = 0                 // variable
 const rows_before_num = 2       // variable
 
 const multiple_rows = []
