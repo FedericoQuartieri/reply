@@ -42,7 +42,7 @@ const parser = (input,rows_before_num, rows = 0) => {
     return obje
 }
 
-const obje = parser("input-teleportation-35b0.txt",2) // input, number if variable rows, number if fixed rows
+const obje = parser("input-riceboard-27ae.txt",2,1) // input, number if variable rows, number if fixed rows
 
 // main
 
