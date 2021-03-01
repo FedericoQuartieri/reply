@@ -2,15 +2,25 @@ const fs=require('fs')
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati e richiede due variabili
 
+<<<<<<< HEAD
 let data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split("\n")
 //let data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).split('\n')
+=======
+//let data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split("\n")
+let data=fs.readFileSync('input-teleportation-35b0.txt',{encoding:'utf8',flag:'r'}).split('\n')
+>>>>>>> 59b48b2444a8fd2ed8ca752db662b20c3b3e0e25
 //let data=fs.readFileSync('input-party-81b9.txt',{encoding:'utf8',flag:'r'}).split('\n')
 
 const cases = data.shift()
 data.splice(data.length-1)
 
+<<<<<<< HEAD
 const rows =6            // variable
 const selector = null    // variable, null se non richiede recursive
+=======
+const rows =6                  // variable
+const selector = 2    // variable, null se non richiede recursive
+>>>>>>> 59b48b2444a8fd2ed8ca752db662b20c3b3e0e25
 const obje = {}
 
 function del(array,selector,curIndex,c=0){
