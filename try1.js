@@ -9,9 +9,6 @@ let data=fs.readFileSync('input-antivirus-a4cc.txt',{encoding:'utf8',flag:'r'}).
 const cases = data.shift()
 data.splice(data.length-1)
 
-
-console.log("inizio")
-console.log(data)
 const rows =6                  // variable
 const selector = null    // variable, null se non richiede recursive
 const obje = {}
