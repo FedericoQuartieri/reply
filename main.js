@@ -1,30 +1,30 @@
 const fs=require('fs')
 
-// parse in che restituisce oggetto (obje) con chiave caso valore dati e richiede due variabili
+// parse in che restituisce oggetto (obje) con chiave caso valore dati
+
 const parser = (input,rows_before_num, rows = 0) => {
-    const data=fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
+    const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
-    const multiple_rows = []
+    const rows_when_cut = []
     const obje = {}
     if (rows === 0) {
         let curnum = 0
-        data.forEach((e,i) => {
+        data.forEach((e,i) => {                                         // trova estremi del case
             if (i === rows_before_num + curnum ) {
                 curnum += parseInt(e) + rows_before_num + 1 
-                multiple_rows.push(curnum)
-    
+                rows_when_cut.push(curnum)
             }
         })
         let numprev = 0
-        data.forEach((e, i) => {
+        data.forEach((e, i) => {                                        // divide array secondo gli estremi
             if(i<cases){
-                num = multiple_rows[i]
+                num = rows_when_cut[i]
                 const a = data
                 obje[i+1] = a.slice(numprev,num)
                 numprev = num
             }
         })
-    } else {
+    } else {                                                            // se estremi case non variabili (rows fixed)
         data.forEach((e, i) => {
             if(i<cases){
                 const a = data
@@ -39,21 +39,20 @@ const parser = (input,rows_before_num, rows = 0) => {
     return obje
 }
 
-const obje = parser("input-teleportation-35b0.txt",2) 
-
-console.log(obje)
+const obje = parser("input-teleportation-35b0.txt",2) // input, number if variable rows, number if fixed rows
 
 // main
 
+console.log(obje)
 const result = {}
 
 Object.keys(obje).forEach(key =>{
-    if (true){
-        console.log(key)
-        res = null
-        result[key] = res
+    if (key === key){       // change key to see only one case
+        console.log(key)    // must be the only console in main
+        result[key] = res = 0
     }
 })
+
 
 // parse out che richiede un oggetto con chiave caso valore risultato
 
