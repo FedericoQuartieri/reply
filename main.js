@@ -24,6 +24,9 @@ const parser = (input,rows_before_num, rows = 0) => {
                 numprev = num
             }
         })
+        Object.keys(obje).forEach(key =>{                               // vedere se funziona
+            obje[key].splice([rows_before_num],1)
+        })
     } else {                                                            // se estremi case non variabili (rows fixed)
         data.forEach((e, i) => {
             if(i<cases){
@@ -32,18 +35,16 @@ const parser = (input,rows_before_num, rows = 0) => {
             }
         })
     }
-    Object.keys(obje).forEach(key => {
-        const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
-        obje[key] = res
-    })
-    Object.keys(obje).forEach(key =>{
-        obje[key].splice([rows_before_num],1)
-    })
     return obje
 }
 
 const obje = parser("input-riceboard-27ae.txt",2,1) // input, number if variable rows, number if fixed rows
-
+/*
+Object.keys(obje).forEach(key => {
+    const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
+    obje[key] = res
+})
+*/
 // main
 
 console.log(obje)
