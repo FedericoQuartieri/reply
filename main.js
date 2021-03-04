@@ -2,21 +2,21 @@ const fs=require('fs')
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati
 
-const parser = (input, rows, rows_before_num = null, duoble_num = false, duoble_num_use = 0) => {
+const parser = (input,{rows=0, exception = null, double = false}) => {
     const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
     const rows_when_cut = []
     const obje = {}
     console.log(data)
-    if (rows_before_num !== null) {
+    if (exception !== null) {
         let curnum = 0
         data.forEach((e,i) => {                                         // trova estremi del case
-            if (i === rows_before_num + curnum ) {
-                if (duoble_num) {
-                    curnum += parseInt(e.split(" ")[1]) + rows_before_num + 1 
+            if (i === exception + curnum ) {
+                if (double) {
+                    curnum += parseInt(e.split(" ")[1]) + exception + 1 
                     rows_when_cut.push(curnum)
                 } else {
-                    curnum += parseInt(e) + rows_before_num + 1 
+                    curnum += parseInt(e) + exception + 1 
                     rows_when_cut.push(curnum)
                 }
             }
@@ -31,7 +31,7 @@ const parser = (input, rows, rows_before_num = null, duoble_num = false, duoble_
             }
         })
         Object.keys(obje).forEach(key =>{                               // con il double num forse va tolto
-            obje[key].splice([rows_before_num],1)   
+            obje[key].splice([exception],1)   
         })
     } else {                                                            // se estremi case non variabili (rows fixed)
         data.forEach((e, i) => {
@@ -44,7 +44,8 @@ const parser = (input, rows, rows_before_num = null, duoble_num = false, duoble_
     return obje
 }
 
-const obje = parser("input-scoreboard-8be2.txt",0, 0, true, 1) // input, number if fixed rows, number if variable rows, true if num not single as in t9, if true index to use
+const obje = parser("input-server-a424.txt",{rows:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in t9
+
 /*
 Object.keys(obje).forEach(key => {
     const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
