@@ -2,17 +2,23 @@ const fs=require('fs')
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati
 
-const parser = (input,rows_before_num, rows = 0) => {
+const parser = (input, rows, rows_before_num = null, duoble_num = false, duoble_num_use = 0) => {
     const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
     const rows_when_cut = []
     const obje = {}
-    if (rows === 0) {
+    console.log(data)
+    if (rows_before_num !== null) {
         let curnum = 0
         data.forEach((e,i) => {                                         // trova estremi del case
             if (i === rows_before_num + curnum ) {
-                curnum += parseInt(e) + rows_before_num + 1 
-                rows_when_cut.push(curnum)
+                if (duoble_num) {
+                    curnum += parseInt(e.split(" ")[1]) + rows_before_num + 1 
+                    rows_when_cut.push(curnum)
+                } else {
+                    curnum += parseInt(e) + rows_before_num + 1 
+                    rows_when_cut.push(curnum)
+                }
             }
         })
         let numprev = 0
@@ -24,8 +30,8 @@ const parser = (input,rows_before_num, rows = 0) => {
                 numprev = num
             }
         })
-        Object.keys(obje).forEach(key =>{                               // vedere se funziona
-            obje[key].splice([rows_before_num],1)
+        Object.keys(obje).forEach(key =>{                               // con il double num forse va tolto
+            obje[key].splice([rows_before_num],1)   
         })
     } else {                                                            // se estremi case non variabili (rows fixed)
         data.forEach((e, i) => {
@@ -38,7 +44,7 @@ const parser = (input,rows_before_num, rows = 0) => {
     return obje
 }
 
-const obje = parser("input-riceboard-27ae.txt",2,1) // input, number if variable rows, number if fixed rows
+const obje = parser("input-scoreboard-8be2.txt",0, 0, true, 1) // input, number if fixed rows, number if variable rows, true if num not single as in t9, if true index to use
 /*
 Object.keys(obje).forEach(key => {
     const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
