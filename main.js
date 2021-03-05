@@ -7,12 +7,10 @@ const parser = (input,{rows=0, numbers = true, exception = null, double_number =
     const cases = data.shift()
     const rows_when_cut = []
     const obje = {}
-    console.log(data)
     if (exception !== null) {
         let curnum = 0
         data.forEach((e,i) => {                                         // trova estremi del case
             if (i === exception + curnum ) {
-                console.log(e.split(" ")[double_number])
                 curnum += parseInt(e.split(" ")[double_number]) + exception + 1 
                 rows_when_cut.push(curnum)
             }
