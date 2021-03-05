@@ -48,7 +48,7 @@ const parser = (input,{rows=0, numbers = true, exception = null, double_number =
     return obje
 }
 
-const obje = parser("input-server-a424.txt",{rows:2, numbers: false}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
+const obje = parser("input-server-a424.txt",{rows:2, numbers: false}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard, numbers:true if numbers to be parsed into integers
 
 // main
 
