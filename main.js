@@ -38,11 +38,17 @@ const parser = (input,{rows=0, numbers = true, exception = null, double_number =
                 obje[i+1] = a.slice(i*rows,(i+1)*rows)
             }
         })
+        if (numbers) {
+            Object.keys(obje).forEach(key =>{
+                const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
+                obje[key] = res
+            })
+        }
     }
     return obje
 }
 
-const obje = parser("input-teleportation-1c5f.txt",{exception:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
+const obje = parser("input-server-a424.txt",{rows:2, numbers: false}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
 
 // main
 
