@@ -2,7 +2,7 @@ const fs=require('fs')
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati
 
-const parser = (input,{rows=0, exception = null, double = false}) => {
+const parser = (input,{rows=0, numbers = true, exception = null, double_number = 0}) => {
     const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
     const rows_when_cut = []
@@ -12,13 +12,9 @@ const parser = (input,{rows=0, exception = null, double = false}) => {
         let curnum = 0
         data.forEach((e,i) => {                                         // trova estremi del case
             if (i === exception + curnum ) {
-                if (double) {
-                    curnum += parseInt(e.split(" ")[1]) + exception + 1 
-                    rows_when_cut.push(curnum)
-                } else {
-                    curnum += parseInt(e) + exception + 1 
-                    rows_when_cut.push(curnum)
-                }
+                console.log(e.split(" ")[double_number])
+                curnum += parseInt(e.split(" ")[double_number]) + exception + 1 
+                rows_when_cut.push(curnum)
             }
         })
         let numprev = 0
@@ -31,7 +27,11 @@ const parser = (input,{rows=0, exception = null, double = false}) => {
             }
         })
         Object.keys(obje).forEach(key =>{                               // con il double num forse va tolto
-            obje[key].splice([exception],1)   
+            obje[key].splice([exception],1)
+            if (numbers){
+                const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
+                obje[key] = res
+            }
         })
     } else {                                                            // se estremi case non variabili (rows fixed)
         data.forEach((e, i) => {
@@ -44,14 +44,8 @@ const parser = (input,{rows=0, exception = null, double = false}) => {
     return obje
 }
 
-const obje = parser("input-server-a424.txt",{rows:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in t9
+const obje = parser("input-teleportation-1c5f.txt",{exception:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
 
-/*
-Object.keys(obje).forEach(key => {
-    const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
-    obje[key] = res
-})
-*/
 // main
 
 console.log(obje)
