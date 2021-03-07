@@ -1,6 +1,6 @@
 const fs=require('fs')
 
-const parser = (input,{rows=0, numbers = true, exception = null, double_number = 0}) => {
+const parser = (input,{rows=0, numbers = false, exception = null, double_number = 0}) => {
     const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
     const rows_when_cut = []

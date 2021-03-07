@@ -3,7 +3,7 @@ const lib = require("./lib");
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati
 
-const obje = lib.parser("input-server-a424.txt",{rows:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
+const obje = lib.parser("input-t9-3bee.txt",{rows:28}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
 
 // main
 
