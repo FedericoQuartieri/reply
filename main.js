@@ -1,9 +1,9 @@
-const fs=require('fs')
+const fs=require('fs');
 const lib = require("./lib");
 
 // parse in che restituisce oggetto (obje) con chiave caso valore dati
 
-const obje = lib.parser("input-t9-3e27.txt",{rows:28, numbers: false}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
+const obje = lib.parser("input-t9-ee09.txt",{rows:28, numbers: false}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
 
 // main
 
@@ -26,7 +26,7 @@ Object.keys(obje).forEach(key =>{
 
 
 Object.keys(obje).forEach(key =>{
-    if (key === key){       // change key to see only one case
+    if (key === "2"){       // change key to see only one case
         const data = obje[key]
         const dict={
             '2':['A','B','C'],
@@ -46,28 +46,9 @@ Object.keys(obje).forEach(key =>{
         list.pop()
         list = list.map(e=>{
             return [dict[e[0]], dict[e[1]]]
-            //console.log(dict[e[0]],dict[e[1])
         })
-        // find first 
 
-        listone = []
-        list[0][0].forEach((e, i) => {
-            list[0][1].forEach(element =>{
-                listone.push(e + element)
-            } )
-        })
-        a = listone.map((e, i) => {
-            return data[alfabe.lastIndexOf(e[1])+ 1][alfabe.lastIndexOf(e[0])]
-        })
-        console.log(list)
-        console.log(listone)
-        console.log(a)
-        const res = []
-        const conse = listone[a.lastIndexOf(Math.max.apply(null, a))]
-        res.push(conse[0], conse[1])
-        // fine find first
-
-        list.shift()
+        let listone_all = []
         list.forEach((e,i) => {
             listone = []
             e[1].forEach((element, j) => {
@@ -75,21 +56,67 @@ Object.keys(obje).forEach(key =>{
                     listone.push( element1 + element)
                 })
             })
-            a = listone.map((e, i) => {
+            listone_all.push(listone)
+        })
+        const rec = (lista) => {
+            const a = []
+            lista[0].forEach(element => {
+                lista[1].forEach(element1 => {
+                    if (element[element.length - 1] === element1[0]) {
+                        a.push(element + element1[1])
+                    }
+                })
+            })
+            listone_all.shift()
+            listone_all.shift()
+            listone_all.unshift(a)
+            const b = listone_all.slice()
+            if (listone_all.length === 1) {
+            } else {
+                rec(b.splice(0, 2))
+            }
+        }
+        const b = listone_all.slice()
+        rec(b.splice(0,2))
+        listone_all = listone_all[0]
+        sums = []
+        listone_all.forEach(e => {
+            list = []
+            e.split("").forEach((element, i)=> {
+                list.push(e.substring(i,i+2))
+            })
+            list.pop()
+            a = list.map((e, i) => {
                 return data[alfabe.indexOf(e[1])+ 1][alfabe.indexOf(e[0])]
             })
-            const conse = listone[a.lastIndexOf(Math.max.apply(null, a))]
-            console.log(listone)
-            console.log(a)
-            res.push(conse[1])
+            sum = a.reduce((acc, a) =>{
+                return acc + a
+            })
+            sums.push(sum)
         })
-        console.log(res.join(""))
-
-        // console.log(key,data)    // must be the only console in main
-        result[key] = res.join("")
+        max = Math.max.apply(null, sums)
+        // const pro = sums.slice()
+        // console.log(sums.indexOf(max))
+        // console.log(max)
+        resu = []
+        sums.forEach(e => {
+            if (e === max) {
+                resu.push(listone_all[sums.indexOf(e)])
+                sums.splice(sums.indexOf(e), 1)
+                listone_all.splice(sums.indexOf(e), 1)
+            }
+        })
+        res = resu.sort().pop()
+        // console.log(res)
+        console.log(key)    // must be the only console in main
+        result[key] = res
     }
 })
-
+/*
+a = listone.map((e, i) => {
+    return data[alfabe.indexOf(e[1])+ 1][alfabe.indexOf(e[0])]
+})
+*/
 
 // parse out che richiede un oggetto con chiave caso valore risultato
 
