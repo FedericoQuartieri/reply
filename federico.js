@@ -25,4 +25,4 @@ Object.keys(result).forEach(key => {
     output += `Case #${key}: ${result[key]}` + "\n"
 })
 
-fs.writeFile('output.txt', output, () => {})
+fs.writeFile('federico.txt', output, () => {})
