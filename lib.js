@@ -1,6 +1,6 @@
 const fs=require('fs')
 
-const parser = (input,{rows=0, numbers = false, exception = null, double_number = 0}) => {
+const parser = (input,{rows=0, numbers = true, exception = null, double_number = null}) => {
     const data = fs.readFileSync(input,{encoding:'utf8',flag:'r'}).split('\n')
     const cases = data.shift()
     const rows_when_cut = []
@@ -23,7 +23,9 @@ const parser = (input,{rows=0, numbers = false, exception = null, double_number 
             }
         })
         Object.keys(obje).forEach(key =>{                               // con il double num forse va tolto
-            obje[key].splice([exception],1)
+            if (double_number === null){
+                obje[key].splice([exception],1)
+            }
             if (numbers){
                 const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
                 obje[key] = res
