@@ -26,20 +26,25 @@ Object.keys(obje).forEach(key =>{
         let min1=[]
         let max0=[]
         let max1=[]
+        let mins=[]
         let max=0
         for(let i=0;i<antennas_to_use;i++){
-            min0.push(ant_min.reverse()[i]*build_min[i])
-            min1.push(ant_min[i]*build_min.reverse()[i])
+            min0.push(ant_min.slice().reverse()[i]*build_min[i])
+            min1.push(ant_min[i]*build_min.slice().reverse()[i])
         }
         for(let i=0;i<antennas_to_use;i++){
             max0.push(ant_max[i]*build_max[i])
-            max1.push(ant_max.reverse()[i]*build_max.reverse()[i])
+            max1.push(ant_max.slice().reverse()[i]*build_max.slice().reverse()[i])
         }
+
+        for(let i=0;i<antennas_to_use;i++){
+            if(min0[i]<min1[i]){
+                mins.push(min0[i])
+            }
+        }
+        max=max0.reduce((a,b)=>a+b,0)
         //console.log(ant_min)
-        const summin0=min0.reduce((a,b)=>a+b,0)
-        const summin1=min1.reduce((a,b)=>a+b,0)
-        const summax1=max0.reduce((a,b)=>a+b,0)
-        const summax0=max1.reduce((a,b)=>a+b,0)
+        /*
         if(summin0<summin1){
             min=summin0
         }
@@ -51,15 +56,21 @@ Object.keys(obje).forEach(key =>{
         else{
             max=summax1
         }
-        console.log(ant_min)
-        console.log(build_min)
+        */
+        //console.log(ant_min)
+        //console.log(build_min)
         console.log(ant_max)
         console.log(build_max)
-        console.log(max1)
+        console.log(min0)
+        console.log(min1)
+        console.log("boia dio")
+
+
+
 
 
         console.log(key)    // must be the only console in main
-        result[key] = res = (min.toString()) + " " + (max.toString())
+        result[key] = res = (min.toString()) + "boia dio" + (max.toString())
     }
 })
 

@@ -23,7 +23,7 @@ const divisore= (n) => {
     return num
 }
 
-for(let i=0; i<T; i++){
+for(let i=0; i<1; i++){
     console.log(i)
     let s=0
     let l=[]
@@ -31,9 +31,8 @@ for(let i=0; i<T; i++){
     l=(data[(i*2)+1].split(' '))
     l.sort()
     l.reverse()
-
+    console.log(divisori)
     for(let i=0; i<l.length; i++){
-        console.log("2")
         divisori.push(divisore(l[i]))
     }
     let res = 0
