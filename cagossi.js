@@ -1,28 +1,57 @@
-const fs=require('fs')
-const lib = require("./lib");
+"use strict"
+const fs = require('fs')
 
-// parse in che restituisce oggetto (obje) con chiave caso valore dati
+let data = fs.readFileSync('./input-kits-7be9.txt', 'utf8')
 
-const obje = lib.parser("input-server-a424.txt",{rows:2}) // input, rows:number of rows if fixed rows, exception: index of variable rows if exception, double: true if exception not single as in scoreboard
+data=data.split('\r').join('').split("\n")
 
-// main
+let T=data[0]
+data.splice(0,1)
 
-console.log(obje)
-const result = {}
+let output=""
 
-Object.keys(obje).forEach(key =>{
-    if (key === key){       // change key to see only one case
-        console.log(key)    // must be the only console in main
-        result[key] = res = 0
+
+
+
+const divisore= (n) => {
+    let num=[]
+    for(let i=0; i<n+1; i++){
+        if(n%i===0){
+            num.push(i)
+        }
     }
-})
+    return num
+}
+
+for(let i=0; i<T; i++){
+    console.log(i)
+    let s=0
+    let l=[]
+    let divisori=[]
+    l=(data[(i*2)+1].split(' '))
+    l.sort()
+    l.reverse()
+
+    for(let i=0; i<l.length; i++){
+        console.log("2")
+        divisori.push(divisore(l[i]))
+    }
+    let res = 0
+    divisori[0].forEach(number => {
+        const found = []
+        divisori.forEach(numbers => {
+            if (numbers.includes(number)){
+                found.push(number)
+            }
+        })
+        if (found.length === divisori.length){
+            res += 1
+        }
+    })
 
 
-// parse out che richiede un oggetto con chiave caso valore risultato
-
-let output = ""
-Object.keys(result).forEach(key => {
-    output += `Case #${key}: ${result[key]}` + "\n"
-})
-
-fs.writeFile('cagossi.txt', output, () => {})
+    output += `Case #${i+1}: ${res}` + "\n"
+}
+console.log(output)
+output=output.slice(0,-1)
+fs.writeFileSync('./cagossi.txt', output)

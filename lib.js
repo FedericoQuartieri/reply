@@ -22,8 +22,10 @@ const parser = (input,{rows=0, numbers = false, exception = null, double_number 
                 numprev = num
             }
         })
-        Object.keys(obje).forEach(key =>{                               // con il double num forse va tolto
-            obje[key].splice([exception],1)
+        Object.keys(obje).forEach(key =>{    
+            if (double_number === 0){                           // con il double num forse va tolto
+                obje[key].splice([exception],1)
+            }
             if (numbers){
                 const res = obje[key].map(e=> e.split(" ").map(e => parseInt(e)))
                 obje[key] = res
