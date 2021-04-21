@@ -1,1 +1,15 @@
-Case #1: 0
+Case #1: 0boia dio9135055175
+Case #2: 0boia dio7800596575
+Case #3: 0boia dio5991430988
+Case #4: 0boia dio6058120952
+Case #5: 0boia dio9523379676
+Case #6: 0boia dio5399103430
+Case #7: 0boia dio8505309392
+Case #8: 0boia dio6747953558
+Case #9: 0boia dio8677390667
+Case #10: 0boia dio9694031494
+Case #11: 0boia dio9030620484
+Case #12: 0boia dio5759782811
+Case #13: 0boia dio7168938701
+Case #14: 0boia dio6170829625
+Case #15: 0boia dio5196814633
